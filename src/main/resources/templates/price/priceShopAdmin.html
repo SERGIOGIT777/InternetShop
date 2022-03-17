@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" content="application/json">
+    <title>Форма покупок</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Форма покупки</div>
+                <div class="panel-body">
+                    <form role="Form" method="post" action="" th:action="@{/adminPage/saveBucket}"
+                          th:object="${bucket}">
+                        <div class="form-group">
+                            <input type="hidden" id="id_price" class="form-control"
+                                   th:value="*{prices.id}"
+                                   name="id_price">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" id="id_logins" class="form-control"
+                                   th:value="*{getUsers().id}"
+                                   name="id_logins">
+                        </div>
+                        <div class="form-group">
+                            <label for="dates">Дата покупки</label>
+                            <input type="date" id="dates" class="form-control"
+                                   data-date-format="yyyy-MM-dd"
+                                   th:value="*{dates}"
+                                   name="dates" placeholder="Дата покупки">
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('dates')}" th:errors="*{dates}">
+                            Information Error
+                        </div>
+                        <div class="form-group">
+                            <label for="counts">Количество покупки товара</label>
+                            <input type="number" id="counts" class="form-control"
+                                   th:value="*{counts}"
+                                   name="counts" placeholder="Количество товара">
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('counts')}" th:errors="*{counts}">
+                            Information Error
+                        </div>
+                        <div style="color:red" th:if="${bucket.prices.getCount()} < ${bucket.getCounts()}">
+                            Нет указанного количества товаров на складе (всего товаров <b
+                                th:text="${bucket.prices.getCount()}"></b> )
+                        </div>
+                        <div style="color:red" th:if="${bucket.getCounts()} < 1">
+                            Значение покупки должно быть больше 0
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Адрес доставки</label>
+                            <textarea id="address" class="form-control"
+                                   th:value="*{address}"
+                                   name="address" placeholder="Адрес доставки">
+                            </textarea>
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">
+                            Information Error
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Контактный телефон</label>
+                            <input type="tel" id="phone" class="form-control"
+                                   th:value="*{phone}"
+                                   name="phone" placeholder="Телефон">
+                        </div>
+                        <div style="color:red" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+                            Information Error
+                        </div>
+                        <div class="form-group">
+                            <select id="status" class="form-control" name="status" th:value="*{status}">
+                                <option value="ожидает сборки">ожидает сборки</option>
+                                <option value="собран">собран</option>
+                                <option value="выдан">выдан</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-lg" id="submit" name="submit">Записать
+                            </button>
+                            <input type="button" class="btn btn-primary btn-lg"
+                                   onclick="document.location='http://localhost:8081/adminPage/myPage'"
+                                   value="Вернуться">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

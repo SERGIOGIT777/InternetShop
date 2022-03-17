@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Обновить заказ</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Форма обновления заказа</div>
+                <div class="panel-body">
+                    <form role="Form" method="post" action="" accept-charset="UTF-8"
+                          th:action="@{/adminPage/updateBucket}"
+                          th:object="${updateBucket}">
+                        <div class="form-group">
+                            <label style="color: red; font-size: 40px" >Информация о заказе</label>
+                            <hr/>
+                            <label style="color: green; font-size: 16px">Наименовение товара - </label>
+                            <label th:text="${updateBucket.getPrices().name} + ' ' + ${updateBucket.getPrices().about}">
+                            </label>
+                            <hr/>
+                            <label style="color: green; font-size: 16px">Пользователь - </label>
+                            <label th:text="*{getUsers().information}"></label>
+                            <hr/>
+                            <label style="color: green; font-size: 16px">Стоимость покупки - </label>
+                            <label th:text="${updateBucket.price} + ' BYN'"></label>
+                            <hr/>
+                            <label style="color: green; font-size: 16px">Дата покупки - </label>
+                            <label data-date-format="dd-mm-yyyy" th:text="*{dates}"></label>
+                            <hr/>
+                            <label style="color: green; font-size: 16px">Количество - </label>
+                            <label th:text="${updateBucket.counts} + ' ед.'"></label>
+                            <hr/>
+                            <label style="color: green; font-size: 16px">Адрес доставки - </label>
+                            <label th:text="${updateBucket.address}"></label>
+                            <hr/>
+                            <label style="color: green; font-size: 16px">Контактный телефон - </label>
+                            <label th:text="${updateBucket.phone}"></label>
+                        </div>
+                        <div class="form-group">
+<!--                            <label for="id">ID</label>-->
+                            <input type="hidden" id="id" class="form-control"
+                                   th:value="*{id}"
+                                   name="id" placeholder="Индекс">
+                        </div>
+                        <div class="form-group">
+                            <label for="status">Статус товара</label>
+                            <select id="status" class="form-control" name="status" th:value="*{status}">
+                                <option value="ожидает сборки">ожидает сборки</option>
+                                <option value="собран">собран</option>
+                                <option value="выдан">выдан</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-lg" id="submit" name="submit">Обновить</button>
+                            <input type="button" class="btn btn-primary btn-lg"
+                                   onclick="document.location='http://localhost:8081/adminPage/bucketAdmin'" value="Вернуться">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

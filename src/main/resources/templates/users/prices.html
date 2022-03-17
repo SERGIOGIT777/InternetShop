@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Прайс-лист</title>
+    <link href="https://bootstrap-4.ru/docs/3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://bootstrap-4.ru/docs/3.3.2/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://bootstrap-4.ru/docs/3.3.2//assets/js/ie8-responsive-file-warning.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body>
+<script defer>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-4481610-59', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript"> (function (m, e, t, r, i, k, a) {
+    m[i] = m[i] || function () {
+        (m[i].a = m[i].a || []).push(arguments)
+    };
+    m[i].l = 1 * new Date();
+    k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}); </script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/39705265" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8588635311388465",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/shops/myPage}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                     class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <g color="blue">
+                        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                    </g>
+                </svg>
+            </a>
+            <form class="navbar-brand" method="GET"
+                  action="#" th:action="@{/shops/myPage}"
+                  th:object="${userUser}">
+                <b th:text="'Добро пожаловать ' + ${userUser}"></b>
+            </form>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <!--                <li><a href="#">Dashboard</a></li>-->
+                <!--                <li><a href="#">Settings</a></li>-->
+                <!--                <li><a href="#">Profile</a></li>-->
+                <!--                <li><a href="#">Help</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-left" method="GET"
+                  action="#" th:action="@{/shops/findAbout}"
+                  th:object="${finder}">
+                <div>
+                    <input id="name" class="input-text js-input" type="text" name="name"
+                           th:field="*{about}" placeholder="Поиск по товару">
+                    <input class="btn btn-primary" type="submit" value="Найти">&nbsp;&nbsp;&nbsp;
+                    <input type="button" class="btn btn-primary"
+                           onclick="document.location='http://localhost:8081/shops/bucketUsers'"
+                           value="Список покупок"/>
+                </div>
+            </form>
+            <form class="navbar-form navbar-right" th:action="@{/logout}" method="post">
+                <input type="submit" class="btn btn-warning" value="Выйти"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li>
+                    <div>
+                        <form class="navbar-form navbar-left" method="GET"
+                              action="#" th:action="@{/shops/findName}"
+                              th:object="${finder}">
+                            <div>
+                                <input id="name1" class="input-text js-input" type="hidden" name="name"
+                                       th:field="*{name}"
+                                       th:value="${finder.setName('компьютер')}"
+                                       placeholder="Поиск по наименованию">
+                                <input class="btn btn-primary" type="submit" value="Компьютеры"
+                                       style="height:50px; width:250px">&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div>
+                        <form class="navbar-form navbar-left" method="GET"
+                              action="#" th:action="@{/shops/findName}"
+                              th:object="${finder}">
+                            <div>
+                                <input id="name2" class="input-text js-input" type="hidden" name="name"
+                                       th:field="*{name}"
+                                       th:value="${finder.setName('ноутбук')}"
+                                       placeholder="Поиск по наименованию">
+                                <input class="btn btn-primary" type="submit" value="Ноутбуки"
+                                       style="height:50px; width:250px">&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div>
+                        <form class="navbar-form navbar-left" method="GET"
+                              action="#" th:action="@{/shops/findName}"
+                              th:object="${finder}">
+                            <div>
+                                <input id="name3" class="input-text js-input" type="hidden" name="name"
+                                       th:field="*{name}"
+                                       th:value="${finder.setName('клавиатура и мышь')}"
+                                       placeholder="Поиск по наименованию">
+                                <input class="btn btn-primary" type="submit" value="Клавиатура и мышь"
+                                       style="height:50px; width:250px">&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div>
+                        <form class="navbar-form navbar-left" method="GET"
+                              action="#" th:action="@{/shops/findName}"
+                              th:object="${finder}">
+                            <div>
+                                <input id="name4" class="input-text js-input" type="hidden" name="name"
+                                       th:field="*{name}"
+                                       th:value="${finder.setName('планшет')}"
+                                       placeholder="Поиск по наименованию">
+                                <input class="btn btn-primary" type="submit" value="Планшеты"
+                                       style="height:50px; width:250px">&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div>
+                        <form class="navbar-form navbar-left" method="GET"
+                              action="#" th:action="@{/shops/findName}"
+                              th:object="${finder}">
+                            <div>
+                                <input id="name5" class="input-text js-input" type="hidden" name="name"
+                                       th:field="*{name}"
+                                       th:value="${finder.setName('телефон')}"
+                                       placeholder="Поиск по наименованию">
+                                <input class="btn btn-primary" type="submit" value="Телефоны"
+                                       style="height:50px; width:250px">&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div>
+                        <form class="navbar-form navbar-left" method="GET"
+                              action="#" th:action="@{/shops/findName}"
+                              th:object="${finder}">
+                            <div>
+                                <input id="name6" class="input-text js-input" type="hidden" name="name"
+                                       th:field="*{name}"
+                                       th:value="${finder.setName('электронная книга')}"
+                                       placeholder="Поиск по наименованию">
+                                <input class="btn btn-primary" type="submit" value="Электронные книги"
+                                       style="height:50px; width:250px">&nbsp;&nbsp;&nbsp;
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <hr/>
+                <li>
+                    <div class="navbar-form navbar-left">
+                        <button type="button" class="btn btn-primary"
+                                th:onclick="|window.location.href='@{/shops/myPage}'|"
+                                style="height:50px; width:250px">
+                            Все оборудование
+                        </button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Список оборудования</h1>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Название товара</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Количество на складе</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="list: ${listPrice}" class="bg-info">
+                    <td th:text="${list.getId()}"></td>
+                    <td th:text="${list.name}"></td>
+                    <td th:text="${list.about}"></td>
+                    <td th:text="${list.price}"></td>
+                    <td th:text="${list.count}"></td>
+                    <td>
+                        <div th:with="variable = ${list.count}">
+                            <div th:if="${variable} > 0">
+                                <button type="button" class="btn btn-info"
+                                        th:onclick="|window.location.href='@{/shops/saveBucketShop(id=${list.getId()})}'|">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                                    </svg>
+                                    Корзина
+                                </button>
+                            </div>
+                            <div th:unless="${variable}">
+                                <button type="button" class="btn btn-info" disabled
+                                        th:onclick="|window.location.href='@{/shops/saveBucketShop(id=${list.getId()})}'|">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                                        <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                                    </svg>
+                                    Нет на складе
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://bootstrap-4.ru/docs/3.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://bootstrap-4.ru/docs/3.3.2/assets/js/docs.min.js"></script>
+</body>
+</html>

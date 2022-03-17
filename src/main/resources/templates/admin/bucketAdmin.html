@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Покупки</title>
+    <link href="https://bootstrap-4.ru/docs/3.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://bootstrap-4.ru/docs/3.3.2/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://bootstrap-4.ru/docs/3.3.2//assets/js/ie8-responsive-file-warning.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+</head>
+<body>
+<script defer>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-4481610-59', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript"> (function (m, e, t, r, i, k, a) {
+    m[i] = m[i] || function () {
+        (m[i].a = m[i].a || []).push(arguments)
+    };
+    m[i].l = 1 * new Date();
+    k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true}); </script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/39705265" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-8588635311388465",
+        enable_page_level_ads: true
+    });
+</script>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/adminPage/myPage}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                     class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                    <g color="blue">
+                        <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                    </g>
+                </svg>
+            </a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <!--                <li><a href="#">Dashboard</a></li>-->
+                <!--                <li><a href="#">Settings</a></li>-->
+                <!--                <li><a href="#">Profile</a></li>-->
+                <!--                <li><a href="#">Help</a></li>-->
+            </ul>
+            <form class="navbar-form navbar-left" method="GET"
+                  action="#" th:action="@{/adminPage/findBucket}"
+                  th:object="${bucket}">
+                <div>
+                    <select id="status" class="form-control" name="status" th:field="*{status}">
+                        <option value="ожидает сборки">ожидает сборки</option>
+                        <option value="собран">собран</option>
+                        <option value="выдан">выдан</option>
+                    </select>
+                    <!--                    <input id="name" class="input-text js-input" type="text" name="name"-->
+                    <!--                           th:field="*{status}" placeholder="Поиск по статусу">-->
+                    <input class="btn btn-primary" type="submit" value="Найти">&nbsp;&nbsp;&nbsp;
+                </div>
+            </form>
+            <form class="navbar-form navbar-right" th:action="@{/logout}" method="post">
+                <input type="submit" class="btn btn-warning" value="Выйти"/>
+            </form>
+            <form class="navbar-form navbar-right">
+                <input type="button" class="btn btn-success"
+                       onclick="document.location='http://localhost:8081/adminPage/savePrice'"
+                       value="Добавить товар"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div>
+        <h1 class="page-header">Список покупок пользователей</h1>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Пользователь</th>
+                <th scope="col">Покупка</th>
+                <th scope="col">Стоимость покупки</th>
+                <th scope="col">Дата покупки</th>
+                <th scope="col">Количество</th>
+                <th scope="col">Адрес доставки</th>
+                <th scope="col">Контактный телефон</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="list: ${listBucketAdmin}" class="bg-info">
+                <td th:text="${list.getId()}"></td>
+                <td th:text="${list.users.information}"></td>
+                <td th:text="${list.prices.name} + ' ' + ${list.prices.about}"></td>
+                <td th:text="${list.price} + ' BYN'"></td>
+                <td th:text="${list.dates}"></td>
+                <td th:text="${list.counts}"></td>
+                <td th:text="${list.address}"></td>
+                <td th:text="${list.phone}"></td>
+                <td th:text="${list.status}"></td>
+                <td th:with="variable = ${list.getStatus()}">
+                    <div th:if="${variable} == 'ожидает сборки'">
+                        <button type="button" class="btn btn-warning" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-hourglass-split" viewBox="0 0 16 16">
+                                <path d="M2.5 15a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11zm2-13v1c0 .537.12 1.045.337 1.5h6.326c.216-.455.337-.963.337-1.5V2h-7zm3 6.35c0 .701-.478 1.236-1.011 1.492A3.5 3.5 0 0 0 4.5 13s.866-1.299 3-1.48V8.35zm1 0v3.17c2.134.181 3 1.48 3 1.48a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div th:if="${variable} == 'собран'">
+                        <button type="button" class="btn btn-info" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-clipboard-check" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div th:if="${variable} == 'выдан'">
+                        <button type="button" class="btn btn-success" disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger"
+                            th:onclick="|window.location.href='@{/adminPage/updateBucketForm(id=${list.getId()})}'|">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-bucket" viewBox="0 0 16 16">
+                            <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z"/>
+                        </svg>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <hr/>
+        <h3>Всего оформлено <b th:text="${sumAdmin}"></b> покупок</h3>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://bootstrap-4.ru/docs/3.3.2/dist/js/bootstrap.min.js"></script>
+<script src="https://bootstrap-4.ru/docs/3.3.2/assets/js/docs.min.js"></script>
+
+</body>
+</html>

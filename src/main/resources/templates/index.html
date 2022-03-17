@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Добро пожаловать в магазин</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <!-- Bootstrap Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+          rel="stylesheet" type="text/css"/>
+    <!-- SimpleLightbox plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet"/>
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="#page-top">Домашняя</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#about">О магазине</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Услуги</a></li>
+                <li class="nav-item"><a class="nav-link" href="#portfolio">Товары</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/Page}">Список товаров</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Контакты</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Войти</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container px-4 px-lg-5 h-100">
+        <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+            <div class="col-lg-8 align-self-end">
+                <h1 class="text-white font-weight-bold">Добро пожаловать в магазин цифровой техники г.Бреста
+                    BrestTechnology</h1>
+                <hr class="divider"/>
+            </div>
+            <div class="col-lg-8 align-self-baseline">
+                <p class="text-white-75 mb-5">Заказывайте товар на любой вкус из нашего перечня</p>
+                <a class="btn btn-primary btn-xl" href="#about">Хотите знать больше</a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- About-->
+<section class="page-section bg-primary" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-white mt-0">У нас есть то, что вам нужно!</h2>
+                <hr class="divider divider-light"/>
+                <p class="text-white-75 mb-4">В нашем магазине есть та техника, которая Вам понравиться от
+                    известных компаний по самым выгодным ценам</p>
+                <a class="btn btn-light btn-xl" href="#services">Жми!</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-center mt-0">К вашим услугам</h2>
+        <hr class="divider"/>
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi bi-laptop fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Компьютеры и ноутбуки</h3>
+                    <p class="text-muted mb-0">Техника известных производителей на любой вкус!</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi bi-phone fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Телефоны и планшеты</h3>
+                    <p class="text-muted mb-0">Телефоны и планшеты по выгодным ценам последних
+                        моделей по доступным ценам</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi bi-journal-album fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Электронные книги</h3>
+                    <p class="text-muted mb-0">Все модели электронных книг для доступного и компатного чтения!</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi bi-mouse fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Переферия</h3>
+                    <p class="text-muted mb-0">Мышки и клавиатуры для ПК в том числе беспроводные</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio-->
+<div id="portfolio">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="assets/img/portfolio/fullsize/1.jpg" title="Компьютеры">
+                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/1.jpg" alt="..."/>
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">Компьютеры</div>
+                        <div class="project-name">Персональные компьютеры</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="assets/img/portfolio/fullsize/2.jpg" title="Ноутбуки">
+                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/2.jpg" alt="..."/>
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">Ноутбуки</div>
+                        <div class="project-name">Нетбуки и ноутбуки</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="assets/img/portfolio/fullsize/3.jpg" title="Переферия">
+                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/3.jpg" alt="..."/>
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">Переферия</div>
+                        <div class="project-name">Клавиатры и мышки</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="assets/img/portfolio/fullsize/4.jpg" title="Планшеты">
+                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/4.jpg" alt="..."/>
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">Планшеты</div>
+                        <div class="project-name">Планшеты на OS IPhone - Android</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="assets/img/portfolio/fullsize/5.jpg" title="Телефоны">
+                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/5.jpg" alt="..."/>
+                    <div class="portfolio-box-caption">
+                        <div class="project-category text-white-50">Телефоны</div>
+                        <div class="project-name">Телефоны на OS IPhone - Android</div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a class="portfolio-box" href="assets/img/portfolio/fullsize/6.jpg" title="Книги">
+                    <img class="img-fluid" src="assets/img/portfolio/thumbnails/6.jpg" alt="..."/>
+                    <div class="portfolio-box-caption p-3">
+                        <div class="project-category text-white-50">Электронные книги</div>
+                        <div class="project-name">Электронные книги</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--        &lt;!&ndash; Call to action&ndash;&gt;-->
+<!--        <section class="page-section bg-dark text-white">-->
+<!--            <div class="container px-4 px-lg-5 text-center">-->
+<!--            </div>-->
+<!--        </section>-->
+<!-- Contact-->
+<section class="page-section" id="contact">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 col-xl-6 text-center">
+                <h2 class="mt-0">Свяжитесь с нами!</h2>
+                <hr class="divider"/>
+                <p class="text-muted mb-5">Готовы заказать товар у нас или у вас есть вопросы?
+                    Отправьте нам сообщение, и мы свяжемся с вами как можно скорее!</p>
+            </div>
+        </div>
+
+        <div class="stepform_FeYtitg rnd_851294807"></div>
+        <script>
+            (function(s, t, e, p, f, o, r, m) {
+                s[t] = s[t] || {};
+                s[t][851294807] = {
+                    id: "FeYtitg",
+                    rnd: 851294807
+                };
+                e.async = true;
+                e.src = p + f;
+                document[m](o)[r](e)
+            }(window,"stepFORM_params",document.createElement("script"),document.location.protocol==="https:"?"https:":"http:","//u023387.stepform.io/api.js?id=FeYtitg","head","appendChild","querySelector"));
+        </script>
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-4 text-center mb-5 mb-lg-0">
+                <i class="bi-phone fs-2 mb-3 text-muted"></i>
+                <div>+375 (029) 808-78-89</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer-->
+<footer class="bg-light py-5">
+    <div class="container px-4 px-lg-5">
+        <div class="small text-center text-muted">Copyright &copy; 2021 - Brest</div>
+    </div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SimpleLightbox plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+</html>
