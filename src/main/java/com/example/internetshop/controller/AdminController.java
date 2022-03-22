@@ -18,8 +18,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import javax.validation.Valid;
+import java.io.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -76,9 +76,10 @@ public class AdminController {
 
 
     @GetMapping("/myPage")
-    public ModelAndView viewShops() {
+    public ModelAndView viewShops() throws IOException {
         ModelAndView mav = new ModelAndView("admin/pricesAdmin");
-        mav.addObject("finder", new Prices());
+        Prices prices = new Prices();
+        mav.addObject("finder", prices);
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String users = user.getUsername();
         List<Users> users1 = usersRepository.findByLogin(users);
@@ -90,20 +91,22 @@ public class AdminController {
     //--------------------------Сохранение товара-------------------------------
 
     @GetMapping("/savePrice")
-    public ModelAndView addPriceForm() {
+    public ModelAndView addPriceForm(){
         ModelAndView mav = new ModelAndView("admin/addPrice");
-        mav.addObject("addPrise", new Prices());
+        Prices prices = new Prices();
+        mav.addObject("addPrise", prices);
         return mav;
     }
 
+    @Transactional
     @PostMapping("/savePrice")
     public String savePrice(@ModelAttribute("addPrise") @Valid Prices prices,
-                            BindingResult result, Model model) {
+                            BindingResult result, Model model,
+                            @RequestParam("image") String file) {
 
         if (result.hasErrors()) {
             return "admin/addPrice";
         }
-
         priceRepository.save(prices);
         model.addAttribute("getPrise", priceRepository.findAll());
         return "redirect:/adminPage/myPage";
@@ -241,6 +244,7 @@ public class AdminController {
         ModelAndView mav = new ModelAndView("admin/bucketAdmin");
         mav.addObject("bucket", new Shops());
         mav.addObject("listBucketAdmin", shopsRepository.findByStatus(status));
+        mav.addObject("sumAdmin", shopsRepository.findByStatus(status).stream().count());
         return mav;
     }
 

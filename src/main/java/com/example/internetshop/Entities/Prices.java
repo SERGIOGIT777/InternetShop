@@ -1,5 +1,7 @@
 package com.example.internetshop.Entities;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -22,6 +24,9 @@ public class Prices {
     private Double price;
     @NotNull(message = "Поле количество товара должно быть заполнено")
     private Integer count;
+
+    @Lob
+    private String image;
 
     public Long getId() {
         return id;
@@ -61,5 +66,15 @@ public class Prices {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+
+    @Column(name = "image")
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

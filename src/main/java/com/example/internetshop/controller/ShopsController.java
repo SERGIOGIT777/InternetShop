@@ -139,6 +139,7 @@ public class ShopsController {
         mav.addObject("bucketUser", new Shops());
         mav.addObject("listBucketUsers", shopsRepository.findByStatusLogin(status, name));
         mav.addObject("sum", (long) shopsRepository.findByName(name).size());
+        mav.addObject("sum", shopsRepository.findByStatusLogin(status, name).stream().count());
         return mav;
     }
 

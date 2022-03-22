@@ -111,27 +111,31 @@ ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
         <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Покупка</th>
-            <th scope="col">Стоимость покупки</th>
-            <th scope="col">Дата покупки</th>
-            <th scope="col">Количество</th>
-            <th scope="col">Адрес доставки</th>
-            <th scope="col">Контактный телефон</th>
+            <th scope="col" style="vertical-align: middle">ID</th>
+            <th scope="col" style="vertical-align: middle">Покупка</th>
+            <th scope="col" style="vertical-align:middle; text-align: center">Стоимость покупки</th>
+            <th scope="col" style="vertical-align:middle; text-align: center">Дата покупки</th>
+            <th scope="col" style="vertical-align:middle; text-align: center">Количество</th>
+            <th scope="col" style="vertical-align:middle; text-align: center">Адрес доставки</th>
+            <th scope="col" style="vertical-align:middle; text-align: center">Контактный телефон</th>
             <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="list: ${listBucketUsers}" class="bg-info">
-            <td th:text="${list.getId()}"></td>
-            <td th:text="${list.prices.name} + ' ' + ${list.prices.about}"></td>
-            <td th:text="${list.price} + ' BYN'"></td>
-            <td th:text="${list.dates}"></td>
-            <td th:text="${list.counts}"></td>
-            <td th:text="${list.address}"></td>
-            <td th:text="${list.phone}"></td>
-            <td th:text="${list.status}"></td>
-            <td th:with="variable = ${list.getStatus()}">
+            <td th:text="${list.getId()}" style="vertical-align: middle"></td>
+            <td th:text="${list.prices.name} + ' ' + ${list.prices.about}"
+                style="vertical-align: middle"></td>
+            <td th:text="${list.price} + ' BYN'" style="vertical-align: middle; text-align: center"></td>
+            <td th:text="${list.dates}" style="vertical-align: middle; text-align: center"></td>
+            <td th:text="${list.counts}" style="vertical-align: middle; text-align: center"></td>
+            <td th:text="${list.address}" style="vertical-align: middle; text-align: center"></td>
+            <td th:text="${list.phone}" style="vertical-align: middle; text-align: center"></td>
+            <td>
+                <img th:src="@{${'/uploads/'+list.prices.image}}" width="100">
+            </td>
+            <td th:text="${list.status}" style="vertical-align: middle; text-align: center"></td>
+            <td th:with="variable = ${list.getStatus()}" style="vertical-align: middle">
                 <div th:if="${variable} == 'ожидает сборки'">
                     <button type="button" class="btn btn-warning" disabled>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -165,7 +169,7 @@ ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
         </tbody>
     </table>
     <hr/>
-    <h3>Всего совершено <b th:text="${sum}"></b> покупок</h3>
+    <h3>Итого <b th:text="${sum}"></b> покупок</h3>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="https://bootstrap-4.ru/docs/3.3.2/dist/js/bootstrap.min.js"></script>

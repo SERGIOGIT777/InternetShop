@@ -235,22 +235,29 @@ ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
                     <th scope="col">Название товара</th>
                     <th scope="col">Описание</th>
                     <th scope="col">Цена</th>
-                    <th scope="col">Количество на складе</th>
+                    <th scope="col" style="text-align: center">Количество на складе</th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="list: ${listPriceAdmin}" class="bg-info">
-                    <td th:text="${list.getId()}"></td>
-                    <td th:text="${list.name}"></td>
-                    <td th:text="${list.about}"></td>
-                    <td th:text="${list.price}"></td>
-                    <td th:text="${list.count}"></td>
+                    <td th:text="${list.getId()}" style="vertical-align: middle"></td>
+                    <td th:text="${list.name}" style="vertical-align: middle"></td>
+                    <td th:text="${list.about}" style="vertical-align: middle"></td>
+                    <td th:text="${list.price}" style="vertical-align: middle"></td>
+                    <td th:text="${list.count}" style="vertical-align: middle; text-align: center"></td>
                     <td>
+                        <img th:src="@{${'/uploads/'+list.image}}" width="100">
+                    </td>
+                    <td style="vertical-align: middle">
                         <div th:with="variable = ${list.count}">
                             <div th:if="${variable} > 0">
                                 <form action="#" th:action="@{/adminPage/deletePrice(id=${list.getId()})}"
                                       th:method="delete">
+                                    <button type="button" class="btn btn-info"
+                                            th:onclick="|window.location.href='@{${'/uploads/'+list.image}}'|">
+                                         Показать
+                                    </button>
                                     <button type="button" class="btn btn-info"
                                             th:onclick="|window.location.href='@{/adminPage/saveBucket(id=${list.getId()})}'|">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

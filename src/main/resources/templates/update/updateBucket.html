@@ -18,7 +18,11 @@
                           th:action="@{/adminPage/updateBucket}"
                           th:object="${updateBucket}">
                         <div class="form-group">
-                            <label style="color: red; font-size: 40px" >Информация о заказе</label>
+                            <label style="color: red; font-size: 40px">Информация о заказе</label>
+                            <hr/>
+                            <center>
+                                <img th:src="@{${'/uploads/'+updateBucket.getPrices().image}}" width="150">
+                            </center>
                             <hr/>
                             <label style="color: green; font-size: 16px">Наименовение товара - </label>
                             <label th:text="${updateBucket.getPrices().name} + ' ' + ${updateBucket.getPrices().about}">
@@ -43,7 +47,7 @@
                             <label th:text="${updateBucket.phone}"></label>
                         </div>
                         <div class="form-group">
-<!--                            <label for="id">ID</label>-->
+                            <!--                            <label for="id">ID</label>-->
                             <input type="hidden" id="id" class="form-control"
                                    th:value="*{id}"
                                    name="id" placeholder="Индекс">
@@ -57,9 +61,11 @@
                             </select>
                         </div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary btn-lg" id="submit" name="submit">Обновить</button>
+                            <button type="submit" class="btn btn-primary btn-lg" id="submit" name="submit">Обновить
+                            </button>
                             <input type="button" class="btn btn-primary btn-lg"
-                                   onclick="document.location='http://localhost:8081/adminPage/bucketAdmin'" value="Вернуться">
+                                   onclick="document.location='http://localhost:8081/adminPage/bucketAdmin'"
+                                   value="Вернуться">
                         </div>
                     </form>
                 </div>
