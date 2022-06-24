@@ -241,7 +241,7 @@ ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
                 </thead>
                 <tbody>
                 <tr th:each="list: ${listPriceAdmin}" class="bg-info">
-                    <td th:text="${list.getId()}" style="vertical-align: middle"></td>
+                    <td th:text="${list.getId()}" ></td>
                     <td th:text="${list.name}" style="vertical-align: middle"></td>
                     <td th:text="${list.about}" style="vertical-align: middle"></td>
                     <td th:text="${list.price}" style="vertical-align: middle"></td>

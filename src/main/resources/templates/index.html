@@ -186,19 +186,59 @@
             </div>
         </div>
 
-        <div class="stepform_FeYtitg rnd_851294807"></div>
-        <script>
-            (function(s, t, e, p, f, o, r, m) {
-                s[t] = s[t] || {};
-                s[t][851294807] = {
-                    id: "FeYtitg",
-                    rnd: 851294807
-                };
-                e.async = true;
-                e.src = p + f;
-                document[m](o)[r](e)
-            }(window,"stepFORM_params",document.createElement("script"),document.location.protocol==="https:"?"https:":"http:","//u023387.stepform.io/api.js?id=FeYtitg","head","appendChild","querySelector"));
-        </script>
+        <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+            <div class="col-lg-6">
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- * * SB Forms Contact Form * *-->
+                <!-- * * * * * * * * * * * * * * *-->
+                <!-- This form is pre-integrated with SB Forms.-->
+                <!-- To make this form functional, sign up at-->
+                <!-- https://startbootstrap.com/solution/contact-forms-->
+                <!-- to get an API token!-->
+                <form action="" method="post">
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" type="text" placeholder="Enter your name..." data-sb-validations="required"
+                        name="name"/>
+                        <label for="name">Ваше имя</label>
+                        <div class="invalid-feedback" data-sb-feedback="name:required">Имя не должно быть пустым</div>
+                    </div>
+                    <!-- Email address input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="email" type="email" placeholder="name@example.com" data-sb-validations="required,email"
+                        name="email"/>
+                        <label for="email">Email</label>
+                        <div class="invalid-feedback" data-sb-feedback="email:required">email не должен быть пустым.</div>
+                        <div class="invalid-feedback" data-sb-feedback="email:email">Email не валидный.</div>
+                    </div>
+                    <!-- Message input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="message" name="message" type="text" placeholder="Enter your message here..."
+                                  style="height: 10rem" data-sb-validations="required"></textarea>
+                        <label for="message">Сообщение</label>
+                        <div class="invalid-feedback" data-sb-feedback="message:required">Сообщение не должно быть пустым.</div>
+                    </div>
+                    <!-- Submit success message-->
+                    <!---->
+                    <!-- This is what your users will see when the form-->
+                    <!-- has successfully submitted-->
+                    <div class="d-none" id="submitSuccessMessage">
+                        <div class="text-center mb-3">
+                            <div class="fw-bolder">Ваше сообщение успешно отправлено!</div>
+                        </div>
+                    </div>
+                    <!-- Submit error message-->
+                    <!---->
+                    <!-- This is what your users will see when there is-->
+                    <!-- an error submitting the form-->
+                    <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Ошибка отправки сообщения!</div></div>
+                    <!-- Submit Button-->
+                    <div class="d-grid"><button class="btn btn-primary btn-lg"
+                                                id="submitButton" type="button">Отправить</button></div>
+                </form>
+            </div>
+        </div>
+
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-lg-4 text-center mb-5 mb-lg-0">
                 <i class="bi-phone fs-2 mb-3 text-muted"></i>
