@@ -90,10 +90,10 @@ ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
                            th:field="*{about}" placeholder="Поиск по товару">
                     <input class="btn btn-primary" type="submit" value="Найти">&nbsp;&nbsp;&nbsp;
                     <input type="button" class="btn btn-primary"
-                           onclick="document.location='http://localhost:8081/adminPage/bucketAdmin'"
+                           th:onclick="|window.location.href='/adminPage/bucketAdmin'|"
                            value="Список покупок"/>&nbsp;&nbsp;&nbsp;
                     <input type="button" class="btn btn-primary"
-                           onclick="document.location='http://localhost:8081/adminPage/myAdmin'"
+                           th:onclick="|window.location.href='/adminPage/myAdmin'|"
                            value="Список пользователей"/>
                 </div>
             </form>
@@ -102,7 +102,7 @@ ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
             </form>
             <form class="navbar-form navbar-right">
                 <input type="button" class="btn btn-success"
-                       onclick="document.location='http://localhost:8081/adminPage/savePrice'"
+                       th:onclick="|window.location.href='/adminPage/savePrice'|"
                        value="Добавить товар"/>
             </form>
         </div>

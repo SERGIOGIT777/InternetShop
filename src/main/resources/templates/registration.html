@@ -138,7 +138,7 @@
         <div class="form-field col-lg-12">
             <input class="submit-btn" type="submit" value="Регистрация">&nbsp;&nbsp;&nbsp;&nbsp;
             <input class="submit-btn" type="button"
-                   onclick="document.location='http://localhost:8081/login'"
+                   th:onclick="|window.location.href='/login'|"
                    value="Вернуться">
         </div>
     </form>

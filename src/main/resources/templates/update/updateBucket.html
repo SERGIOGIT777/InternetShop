@@ -64,7 +64,7 @@
                             <button type="submit" class="btn btn-primary btn-lg" id="submit" name="submit">Обновить
                             </button>
                             <input type="button" class="btn btn-primary btn-lg"
-                                   onclick="document.location='http://localhost:8081/adminPage/bucketAdmin'"
+                                   th:onclick="|window.location.href='/adminPage/bucketAdmin'|"
                                    value="Вернуться">
                         </div>
                     </form>

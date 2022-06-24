@@ -75,9 +75,9 @@
     <input type="password" name="p" placeholder="пароль" required="required" />
     <button type="submit" class="btn btn-primary btn-block btn-large">Войти</button>
     <button type="submit" class="btn btn-primary btn-block btn-large"
-            onclick="document.location='http://localhost:8081/registration/saveUsers'">Регистрация</button>
+            th:onclick="|window.location.href='/registration/saveUsers'|">Регистрация</button>
     <button type="submit" class="btn btn-primary btn-block btn-large"
-            onclick="document.location='http://localhost:8081/'">Главная</button>
+            th:onclick="|window.location.href='/'|">Главная</button>
   </form>
   <br>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

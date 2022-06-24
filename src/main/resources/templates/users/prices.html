@@ -90,7 +90,7 @@ ym(39705265, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
                            th:field="*{about}" placeholder="Поиск по товару">
                     <input class="btn btn-primary" type="submit" value="Найти">&nbsp;&nbsp;&nbsp;
                     <input type="button" class="btn btn-primary"
-                           onclick="document.location='http://localhost:8081/shops/bucketUsers'"
+                           th:onclick="|window.location.href='/shops/bucketUsers'|"
                            value="Список покупок"/>
                 </div>
             </form>
